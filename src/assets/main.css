@@ -1,1 +1,62 @@
 @import './base.css';
+
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
+    color: unset;
+}
+
+body{
+    background-color:var(--primary-theme-dark-grey);
+}
+
+.is-hidden{
+    display: none!important;
+}
+
+.l-flex{
+    display: flex;
+    flex-direction: column;
+}
+
+.l-flex--reverse{
+    flex-direction: row;
+}
+
+.l-grid{
+    width:100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    padding:20px;
+    gap:20px;
+}
+
+.h-nav-spacing{
+    margin-top: var(--primary-mobile-navigation-height);
+    width:100%;
+}
+
+@media(min-width:768px){
+    .l-flex{
+        flex-direction: row;
+    }
+
+    .l-flex--reverse{
+        flex-direction: column;
+    }
+
+    .l-grid{ 
+        grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+    }
+
+    .h-nav-spacing{
+        margin-top:unset;
+        margin-left: var(--primary-desktop-navigation-width);
+        width: calc(100% - var(--primary-desktop-navigation-width));
+        /* min-height: calc(100vh - var(--primary-desktop-header-height)); */ /* enable to force div to grow to the bottom of the page. */
+    }
+}

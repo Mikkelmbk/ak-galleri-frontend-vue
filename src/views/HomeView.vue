@@ -1,9 +1,10 @@
 <script setup>
+import Nav from "../components/Nav.vue"
 </script>
 
 <template>
-    <div>
-        <h1>Home page</h1>
+    <div class="l-flex">
+        <Nav/>
     </div>
 </template>
 

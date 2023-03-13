@@ -1,4 +1,14 @@
 /* CSS variables here */
 :root {
+    --primary-theme-light-grey: rgba(39, 39, 39, 1);
+    --primary-theme-dark-grey: rgba(27, 27, 27, 1);
+    --primary-theme-light-blue: rgba(41, 142, 234, 1);
+    --primary-theme-transparent-text: rgba(255, 255, 255, .7);
+    --primary-theme-text: rgba(255, 255, 255, 1);
 
+    --primary-desktop-navigation-width: 100px;
+    --primary-desktop-header-height: 70px;
+
+    --primary-mobile-navigation-height:90px;
+    --primary-mobile-header-height: 40px;
 }
