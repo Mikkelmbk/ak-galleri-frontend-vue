@@ -1,13 +1,11 @@
 <script setup>
-import Nav from "../components/Nav.vue"
 import Header from "../components/Header.vue"
+import Wrapper from "../components/Wrapper.vue"
 </script>
 
 <template>
     <Header/>
-    <div class="l-flex">
-        <Nav/>
-    </div>
+    <Wrapper/>
 </template>
 
 <style scoped>
