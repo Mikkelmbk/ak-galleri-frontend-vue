@@ -4,7 +4,7 @@ import Main from "./Main.vue"
 </script>
 
 <template>
-    <div class="l-flex">
+    <div class="c-wrapper l-flex">
         <Nav/>
         <Main/>
     </div>

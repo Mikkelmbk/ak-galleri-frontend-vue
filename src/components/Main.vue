@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <main class="h-nav-spacing">
+    <main class="c-main h-nav-spacing">
 
         <div class="l-grid"></div>
     </main>
