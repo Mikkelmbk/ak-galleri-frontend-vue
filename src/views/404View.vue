@@ -1,10 +1,11 @@
 <script setup>
+import Header from "../components/Header.vue"
+import Wrapper from "../components/Wrapper.vue"
 </script>
 
 <template>
-    <div>
-        <h1>404 page</h1>
-    </div>
+    <Header/>
+    <Wrapper/>
 </template>
 
 <style scoped>
