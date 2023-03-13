@@ -25,3 +25,6 @@ npm run dev
 ```sh
 npm run build
 ```
+
+### Workflow and Conventions
+[BEM Convention workflow](https://www.smashingmagazine.com/2016/06/battling-bem-extended-edition-common-problems-and-how-to-avoid-them/)
