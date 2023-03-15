@@ -1,17 +1,15 @@
 <script setup>
-// import { ref } from "vue";
 import Product from "./Product.vue";
-// import { defineProps } from "vue";
 import { useFetchProducts } from "../composables/useFetchProducts"
 
-const { currentPath } = defineProps(['currentPath']);
+const { productFetchUrl, start, end } = defineProps(['productFetchUrl' ,'start','end']);
 
-const { products, error, loading } = useFetchProducts("https://jsonplaceholder.typicode.com/photos", { currentPath });
+const { products, error, loading } = useFetchProducts(productFetchUrl,start,end);
 
 </script>
 
 <template>
-    <Product v-for="product in products" :title="product.title" :image="product.thumbnailUrl" />
+    <Product v-for="product in products" :key="product.id" :title="product.title" :image="product.thumbnailUrl" />
 </template>
 
 <style scoped></style>

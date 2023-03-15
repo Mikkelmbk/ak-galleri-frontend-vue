@@ -1,6 +1,5 @@
 <script setup>
 import Product from "./Product.vue";
-import { defineProps } from "vue";
 import { useFetchProducts } from "../composables/useFetchProducts"
 
 // Swiper imports
@@ -9,10 +8,9 @@ import { Autoplay, Pagination } from "swiper";
 import 'swiper/css';
 import 'swiper/css/pagination';
 
+const { productFetchUrl, start, end, swiperTitle } = defineProps(['productFetchUrl' ,'start','end','swiperTitle']);
 
-const { currentPath } = defineProps(['currentPath']);
-
-const { products, error, loading, swiperTitle } = useFetchProducts("https://jsonplaceholder.typicode.com/photos", { currentPath });
+const { products, error, loading } = useFetchProducts(productFetchUrl,start,end);
 
 </script>
 
@@ -53,7 +51,7 @@ const { products, error, loading, swiperTitle } = useFetchProducts("https://json
         spaceBetween: 20,
     },
 }" class="c-swiper__init">
-            <SwiperSlide v-for="product in products" class="c-swiper__slide">
+            <SwiperSlide v-for="product in products" :key="product.id" class="c-swiper__slide">
                 <Product :title="product.title" :image="product.thumbnailUrl" />
             </SwiperSlide>
         </Swiper>
