@@ -1,8 +1,7 @@
 <script setup>
 import Product from "./Product.vue";
-import { useProductsStore } from "../stores/products";
-import { storeToRefs } from "pinia";
 import { defineProps } from "vue";
+import { useFetchProducts } from "../composables/useFetchProducts"
 
 // Swiper imports
 import { Swiper, SwiperSlide } from "swiper/vue";
@@ -13,36 +12,13 @@ import 'swiper/css/pagination';
 
 const { currentPath } = defineProps(['currentPath']);
 
-const productsStore = useProductsStore();
-const { productData } = storeToRefs(productsStore);
-
-let products = [];
-let sliderTitle = "";
-
-switch(currentPath){
-    case "/originals":
-        products = productData.value.originals.products;
-        sliderTitle = productData.value.originals.sliderTitle;
-        break;
-    case "/frames":
-        products = productData.value.frames.products;
-        sliderTitle = productData.value.frames.sliderTitle;
-        break;
-    case "/guests":
-        products = productData.value.guests.products;
-        sliderTitle = productData.value.guests.sliderTitle;
-        break;
-    case "/":
-        products = productData.value.guests.products;
-        sliderTitle = productData.value.guests.sliderTitle;
-        break;
-}
+const { products, error, loading, swiperTitle } = useFetchProducts("https://jsonplaceholder.typicode.com/photos", { currentPath });
 
 </script>
 
 <template>
     <div class="c-swiper">
-        <h1 class="c-swiper__heading">{{ sliderTitle }}</h1>
+        <h1 class="c-swiper__heading">{{ swiperTitle }}</h1>
         <Swiper :modules="[Pagination, Autoplay]" :autoplay="{
             delay: 4000,
             disableOnInteraction: false,

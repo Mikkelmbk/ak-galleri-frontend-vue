@@ -2,11 +2,11 @@
 // import { ref } from "vue";
 import Product from "./Product.vue";
 // import { defineProps } from "vue";
-import { useFetch } from "../composables/useFetch"
+import { useFetchProducts } from "../composables/useFetchProducts"
 
 const { currentPath } = defineProps(['currentPath']);
 
-const { products, error, loading } = useFetch("https://jsonplaceholder.typicode.com/photos", { currentPath, swiper:false });
+const { products, error, loading } = useFetchProducts("https://jsonplaceholder.typicode.com/photos", { currentPath });
 
 </script>
 

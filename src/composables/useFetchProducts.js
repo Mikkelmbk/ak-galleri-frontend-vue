@@ -1,18 +1,18 @@
 import { ref } from "vue";
 
-export const useFetch = (url,config) => {
+export const useFetchProducts = (url, options) => {
     const products = ref(null);
     const response = ref(null);
     const error = ref(null);
     const loading = ref(false);
     const swiperTitle = ref("");
-    const currentPath = ref(config.currentPath);
+    const currentPath = ref(options.currentPath);
     const productSlices = ref({
-        start:null,
-        end:null,
+        start: null,
+        end: null,
     });
 
-    switch (currentPath) {
+    switch (currentPath.value) {
         case "/originals":
             productSlices.start = 0;
             productSlices.end = 20;
@@ -32,6 +32,7 @@ export const useFetch = (url,config) => {
             productSlices.start = 60;
             productSlices.end = 80;
             break;
+
     }
 
     const fetchProducts = async () => {
@@ -44,7 +45,7 @@ export const useFetch = (url,config) => {
         } catch (err) {
             error.value = err;
         }
-        finally{
+        finally {
             loading.value = false;
         }
     }
