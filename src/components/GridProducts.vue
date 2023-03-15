@@ -1,34 +1,13 @@
 <script setup>
 // import { ref } from "vue";
 import Product from "./Product.vue";
-import { useProductsStore } from "../stores/products";
-import { storeToRefs } from "pinia";
-import { defineProps } from "vue";
+// import { defineProps } from "vue";
+import { useFetch } from "../composables/useFetch"
 
 const { currentPath } = defineProps(['currentPath']);
-const productsStore = useProductsStore();
-const { productData } = storeToRefs(productsStore);
 
-// const products = ref("");
-// async function getProductData() {
-//     const res = await fetch("https://jsonplaceholder.typicode.com/photos");
-//     const finalRes = await res.json();
-//     products.value = finalRes
-// }
-// getProductData();
-let products = [];
+const { products, error, loading } = useFetch("https://jsonplaceholder.typicode.com/photos", { currentPath, swiper:false });
 
-switch(currentPath){
-    case "/originals":
-        products = productData.value.originals.products;
-        break;
-    case "/frames":
-        products = productData.value.frames.products;
-        break;
-    case "/guests":
-        products = productData.value.guests.products;
-        break;
-}
 </script>
 
 <template>
