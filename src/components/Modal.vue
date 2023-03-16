@@ -1,9 +1,15 @@
 <script setup>
 import Product from "./Product.vue";
+import { useModalStore } from "../stores/modal";
+
+const modalStore = useModalStore();
+
+const { showModal } = modalStore;
+
 </script>
 
 <template>
-    <div class="c-modal">
+    <div @click="showModal(false)" class="c-modal">
         <Product :modalClass="`c-product--modal`" :title="`Some title`" :image="`https://via.placeholder.com/600/92c952`"/>
     </div>
 </template>
