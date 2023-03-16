@@ -1,27 +1,23 @@
 <script setup>
-import { ref } from "vue";
-import GridProducts from "./GridProducts.vue"
-import SwiperProducts from "./SwiperProducts.vue"
-import { useProductsStore } from "../stores/products"
+import GridProducts from "./GridProducts.vue";
+import SwiperProducts from "./SwiperProducts.vue";
+import { useProductsStore } from "../stores/products";
 import { storeToRefs } from "pinia";
-import { useRouter } from "vue-router"
-const router = useRouter();
-const currentPath = ref(router.currentRoute.value.path);
+import { defineProps } from "vue";
+
+const { currentPath } = defineProps(['currentPath']);
 
 const productsStore = useProductsStore();
-
 const { productFetchConfig } = storeToRefs(productsStore);
-
 const { updateFetchConfig } = productsStore;
-
-updateFetchConfig(currentPath.value);
+updateFetchConfig(currentPath);
 
 function loadGridProducts() {
-    return currentPath.value == "/" || currentPath.value == "/contact" ? false : true;
+    return currentPath == "/" || currentPath == "/contact" ? false : true;
 }
 
 function loadSwiperProducts() {
-    return currentPath.value == "/search" || currentPath.value == "/contact" ? false : true;
+    return currentPath == "/search" || currentPath == "/contact" ? false : true;
 }
 
 </script>
@@ -35,6 +31,7 @@ function loadSwiperProducts() {
         <div v-if="loadGridProducts()" class="l-grid js-product-anchor">
             <GridProducts v-for="config in productFetchConfig" :productFetchUrl="config.productFetchUrl" :start="config.start" :end="config.end"/>
         </div>
+        
     </main>
 </template>
 
