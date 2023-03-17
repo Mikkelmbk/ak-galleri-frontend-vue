@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <form class="c-search">
+    <form @submit.prevent="onSubmit" class="c-search">
         <input type="search" name="query" class="c-search__input" placeholder="Søg" />
     </form>
 </template>

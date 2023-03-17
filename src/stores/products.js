@@ -36,6 +36,16 @@ export const useProductsStore = defineStore("products", () => {
                     }
                 )
                 break;
+            case "/search":
+                productFetchConfig.value.push(
+                    {
+                        productFetchUrl: "https://jsonplaceholder.typicode.com/photos",
+                        start: 0,
+                        end: 1000,
+                        swiperTitle: ""
+                    }
+                )
+                break;
             case "/":
                 productFetchConfig.value.push(
                     {
