@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
-export const useProductsStore = defineStore("products", () => {
+export const useFetchConfigStore = defineStore("products", () => {
     const productFetchConfig = ref([]);
     const updateFetchConfig = (currentPath) => {
         productFetchConfig.value = [];
