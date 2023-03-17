@@ -1,10 +1,5 @@
 <script setup>
 import { defineProps } from "vue";
-import { useModalStore } from "../stores/modal";
-
-const modalStore = useModalStore();
-
-const { showModal } = modalStore;
 
 const { title, image, modalClass } = defineProps(['title', 'image', 'modalClass']);
 
@@ -12,7 +7,7 @@ const { title, image, modalClass } = defineProps(['title', 'image', 'modalClass'
 </script>
 
 <template>
-    <div @click="showModal(true);" :class="`${modalClass} c-product js-product`">
+    <div :class="`${modalClass} c-product js-product`">
         <figure class="c-product__figure">
             <img :src="image" :alt="title" class="c-product__image">
             <figcaption class="c-product__figcaption">{{ title }}</figcaption>

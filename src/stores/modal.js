@@ -6,8 +6,10 @@ export const useModalStore = defineStore("modal", () => {
     const modalTitle = ref("");
     const modalImg = ref("");
 
-    function showModal(show){
+    function showModal(show, title, image){
         displayModal.value = show;
+        modalTitle.value = title;
+        modalImg.value = image;
     }
     return { displayModal, modalTitle, modalImg, showModal }
 });

@@ -1,12 +1,17 @@
 <script setup>
 import Product from "./Product.vue";
 import { useFetchProducts } from "../composables/useFetchProducts"
+import { useModalStore } from "../stores/modal";
 
 // Swiper imports
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay, Pagination } from "swiper";
 import 'swiper/css';
 import 'swiper/css/pagination';
+
+const modalStore = useModalStore();
+
+const { showModal } = modalStore;
 
 const { productFetchUrl, start, end, swiperTitle } = defineProps(['productFetchUrl' ,'start','end','swiperTitle']);
 
@@ -52,7 +57,7 @@ const { products, error, loading } = useFetchProducts(productFetchUrl,start,end)
     },
 }" class="c-swiper__init">
             <SwiperSlide v-for="product in products" :key="product.id" class="c-swiper__slide">
-                <Product :title="product.title" :image="product.thumbnailUrl" />
+                <Product @click="showModal(true,product.title,product.thumbnailUrl)" :title="product.title" :image="product.thumbnailUrl" />
             </SwiperSlide>
         </Swiper>
     </div>
