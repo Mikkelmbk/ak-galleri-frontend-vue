@@ -1,17 +1,25 @@
 <script setup>
+// Component imports
 import Nav from "./Nav.vue";
 import Main from "./Main.vue";
 import Modal from "./Modal.vue";
+// Vue imports
 import { useRouter } from "vue-router"
 import { ref } from "vue";
-import { useModalStore } from "../stores/modal";
+// Pinia imports
 import { storeToRefs } from "pinia";
+import { useModalStore } from "../stores/modal";
+import { useSearchQueryStore } from "../stores/searchQuery";
 const router = useRouter();
 const currentPath = ref(router.currentRoute.value.path);
 
+// modalStore
 const modalStore = useModalStore();
-
 const { displayModal } = storeToRefs(modalStore);
+
+// searchQueryStore
+const searchQueryStore = useSearchQueryStore();
+const { query } = storeToRefs(searchQueryStore);
 
 displayModal.value = false;
 function loadModal() {
@@ -22,7 +30,8 @@ function loadModal() {
 <template>
     <div class="c-wrapper l-flex">
         <Nav/>
-        <Main :currentPath="currentPath"/>
+        <!-- by adding :key here and having it listen for query (query is defined in searchQuery.js pinia store), we can update the rerender the Main.vue everytime the search query changes, effectively rerendering the product view at every search term. The SearchForm.vue component is responsible for routing us to the /search route. -->
+        <Main :currentPath="currentPath" :key="query"/>
     </div>
     <Modal v-show="displayModal" v-if="loadModal()"/>
 </template>

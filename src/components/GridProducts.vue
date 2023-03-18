@@ -2,6 +2,7 @@
 import Product from "./Product.vue";
 import { useFetchProducts } from "../composables/useFetchProducts"
 import { useModalStore } from "../stores/modal";
+import { ref } from "vue";
 
 const modalStore = useModalStore();
 
@@ -10,7 +11,6 @@ const { showModal } = modalStore;
 const { productFetchUrl, start, end } = defineProps(['productFetchUrl' ,'start','end']);
 
 const { products, error, loading } = useFetchProducts(productFetchUrl,start,end);
-
 </script>
 
 <template>

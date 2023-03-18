@@ -1,17 +1,20 @@
 <script setup>
-import { useRouter } from "vue-router";
+import { useSearchQueryStore } from "../stores/searchQuery";
 import { ref } from "vue";
-const router = useRouter();
 
 const q = ref("");
 
+// searchQueryStore
+const searchQueryStore = useSearchQueryStore();
+const { updateQuery } = searchQueryStore;
+
 function search(){
-    router.push(`/search?q=${q.value}`);
+    updateQuery(q.value);
 }
 </script>
 
 <template>
-    <form @submit="search()" @submit.prevent="onSubmit" class="c-search">
+    <form @submit.prevent="search()" class="c-search">
         <input v-model="q" type="search" name="query" class="c-search__input" placeholder="Søg" />
     </form>
 </template>

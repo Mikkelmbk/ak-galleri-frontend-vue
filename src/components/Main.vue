@@ -2,15 +2,22 @@
 import GridProducts from "./GridProducts.vue";
 import SwiperProducts from "./SwiperProducts.vue";
 import { useFetchConfigStore } from "../stores/fetchConfig";
+import { useSearchQueryStore } from "../stores/searchQuery";
 import { storeToRefs } from "pinia";
 import { defineProps } from "vue";
 
 const { currentPath } = defineProps(['currentPath']);
 
+// fetchConfigStore
 const fetchConfigStore = useFetchConfigStore();
 const { productFetchConfig } = storeToRefs(fetchConfigStore);
 const { updateFetchConfig } = fetchConfigStore;
-updateFetchConfig(currentPath);
+
+// searchQueryStore
+const searchQueryStore = useSearchQueryStore();
+const { query } = storeToRefs(searchQueryStore);
+
+updateFetchConfig(currentPath, query.value);
 
 function loadGridProducts() {
     return currentPath == "/" || currentPath == "/contact" ? false : true;

@@ -3,7 +3,7 @@ import { ref } from 'vue';
 
 export const useFetchConfigStore = defineStore("products", () => {
     const productFetchConfig = ref([]);
-    const updateFetchConfig = (currentPath) => {
+    const updateFetchConfig = (currentPath, query) => {
         productFetchConfig.value = [];
         switch (currentPath) {
             case "/originals":
@@ -39,7 +39,7 @@ export const useFetchConfigStore = defineStore("products", () => {
             case "/search":
                 productFetchConfig.value.push(
                     {
-                        productFetchUrl: "https://jsonplaceholder.typicode.com/photos",
+                        productFetchUrl: `https://jsonplaceholder.typicode.com/photos/${query}`,
                         start: 0,
                         end: 1000,
                         swiperTitle: ""
