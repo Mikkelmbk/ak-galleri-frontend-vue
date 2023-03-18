@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
-export const useProductsStore = defineStore("products", () => {
+export const useFetchConfigStore = defineStore("products", () => {
     const productFetchConfig = ref([]);
-    const updateFetchConfig = (currentPath) => {
+    const updateFetchConfig = (currentPath, query) => {
         productFetchConfig.value = [];
         switch (currentPath) {
             case "/originals":
@@ -33,6 +33,16 @@ export const useProductsStore = defineStore("products", () => {
                         start: 40,
                         end: 60,
                         swiperTitle: "Nye Gæster"
+                    }
+                )
+                break;
+            case "/search":
+                productFetchConfig.value.push(
+                    {
+                        productFetchUrl: `https://jsonplaceholder.typicode.com/photos/${query}`,
+                        start: 0,
+                        end: 1000,
+                        swiperTitle: ""
                     }
                 )
                 break;
