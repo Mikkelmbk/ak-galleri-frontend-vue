@@ -1,8 +1,5 @@
 <script setup>
-import { defineProps } from "vue";
-
 const { title, image, modalClass } = defineProps(['title', 'image', 'modalClass']);
-
 
 </script>
 

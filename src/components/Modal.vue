@@ -1,12 +1,13 @@
 <script setup>
+// Component import
 import Product from "./Product.vue";
+// Pinia import
 import { useModalStore } from "../stores/modal";
 import { storeToRefs } from "pinia";
 
+// modalStore
 const modalStore = useModalStore();
-
 const { showModal } = modalStore;
-
 const { modalTitle, modalImg } = storeToRefs(modalStore);
 
 </script>

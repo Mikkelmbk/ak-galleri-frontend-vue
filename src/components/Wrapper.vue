@@ -1,12 +1,12 @@
 <script setup>
-// Component imports
+// Component import
 import Nav from "./Nav.vue";
 import Main from "./Main.vue";
 import Modal from "./Modal.vue";
-// Vue imports
+// Vue import
 import { useRouter } from "vue-router"
 import { ref } from "vue";
-// Pinia imports
+// Pinia import
 import { storeToRefs } from "pinia";
 import { useModalStore } from "../stores/modal";
 import { useSearchQueryStore } from "../stores/searchQuery";

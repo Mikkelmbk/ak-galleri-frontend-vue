@@ -1,16 +1,18 @@
 <script setup>
+// Component import
 import Product from "./Product.vue";
+// Composable import
 import { useFetchProducts } from "../composables/useFetchProducts"
+// Pinia import
 import { useModalStore } from "../stores/modal";
-import { ref } from "vue";
-
-const modalStore = useModalStore();
-
-const { showModal } = modalStore;
 
 const { productFetchUrl, start, end } = defineProps(['productFetchUrl' ,'start','end']);
 
-const { products, error, loading } = useFetchProducts(productFetchUrl,start,end);
+// modalStore
+const modalStore = useModalStore();
+const { showModal } = modalStore;
+
+const { products } = useFetchProducts(productFetchUrl,start,end);
 </script>
 
 <template>
