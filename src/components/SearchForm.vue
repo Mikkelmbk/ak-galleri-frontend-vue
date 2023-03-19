@@ -1,6 +1,8 @@
 <script setup>
-import { useSearchQueryStore } from "../stores/searchQuery";
+// Component import
 import { ref } from "vue";
+// Pinia import
+import { useSearchQueryStore } from "../stores/searchQuery";
 
 const q = ref("");
 

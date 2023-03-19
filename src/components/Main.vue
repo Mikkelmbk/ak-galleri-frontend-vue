@@ -1,10 +1,11 @@
 <script setup>
+// Component import
 import GridProducts from "./GridProducts.vue";
 import SwiperProducts from "./SwiperProducts.vue";
+// Pinia import
 import { useFetchConfigStore } from "../stores/fetchConfig";
 import { useSearchQueryStore } from "../stores/searchQuery";
 import { storeToRefs } from "pinia";
-import { defineProps } from "vue";
 
 const { currentPath } = defineProps(['currentPath']);
 

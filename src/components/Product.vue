@@ -1,13 +1,10 @@
 <script setup>
-import { defineProps } from "vue";
-
 const { title, image, modalClass } = defineProps(['title', 'image', 'modalClass']);
-
 
 </script>
 
 <template>
-    <div :class="`${modalClass} c-product js-product`">
+    <div :class="`c-product js-product ${modalClass}`">
         <figure class="c-product__figure">
             <img :src="image" :alt="title" class="c-product__image">
             <figcaption class="c-product__figcaption">{{ title }}</figcaption>
