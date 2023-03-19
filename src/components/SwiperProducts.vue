@@ -5,7 +5,6 @@ import Product from "./Product.vue";
 import { useFetchProducts } from "../composables/useFetchProducts"
 // Pinia import
 import { useModalStore } from "../stores/modal";
-
 // Swiper import
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay, Pagination } from "swiper";
@@ -60,7 +59,7 @@ const { products } = useFetchProducts(productFetchUrl,start,end);
     },
 }" class="c-swiper__init">
             <SwiperSlide v-for="product in products" :key="product.id" class="c-swiper__slide">
-                <Product @click="showModal(true,product.title,product.thumbnailUrl)" :title="product.title" :image="product.thumbnailUrl" />
+                <Product @click="showModal(true,product.title,product.thumbnailUrl)" :modalClass="``" :title="product.title" :image="product.thumbnailUrl" />
             </SwiperSlide>
         </Swiper>
     </div>

@@ -16,7 +16,7 @@ const { products } = useFetchProducts(productFetchUrl,start,end);
 </script>
 
 <template>
-    <Product v-for="product in products" @click="showModal(true,product.title,product.thumbnailUrl)" :key="product.id" :title="product.title" :image="product.thumbnailUrl" />
+    <Product v-for="product in products" @click="showModal(true,product.title,product.thumbnailUrl)" :modalClass="``" :key="product.id" :title="product.title" :image="product.thumbnailUrl" />
 </template>
 
 <style scoped></style>
